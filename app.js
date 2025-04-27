@@ -249,7 +249,7 @@ function saveText(){
     const text = document.getElementById('inputText').value;
 
      localStorage.setItem("savedtext", text);
-     alert("saved Succesfully");  
+     alert("saved Succesfully 💾");  
       
 
 }
