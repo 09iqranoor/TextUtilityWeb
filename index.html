@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Utility App</title>
+  <style>
+    :root {
+      --bg-color: #f0f0f0;
+      --text-color: #333;
+      --btn-bg: #2d4e43;
+      --btn-color: #fff;
+      --highlight-color: red;
+      --highlight-bg: yellow;
+    }
+
+    body.dark-mode {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --btn-bg: #555;
+      --btn-color: #fff;
+      --highlight-color: yellow;
+      --highlight-bg: #444;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .searchitem, .btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .searchitem input {
+      height: 30px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .searchitem button,
+    .btn-container button {
+      background-color: var(--btn-bg);
+      color: var(--btn-color);
+      border: none;
+      border-radius: 5px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .searchitem button:hover,
+    .btn-container button:hover {
+      background-color: #1b372f;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 800px;
+      display: block;
+      margin: 0 auto 20px auto;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    #output {
+      margin-top: 20px;
+      background-color: #fffbe6;
+      padding: 10px;
+      border: 1px dashed #aaa;
+      min-height: 50px;
+      white-space: pre-wrap;
+      border-radius: 6px;
+    }
+
+    #savedText {
+      display: inline-block;
+      margin-top: 10px;
+      font-style: italic;
+      color: #007700;
+    }
+
+    .highlight {
+      background-color: var(--highlight-bg);
+      color: var(--highlight-color);
+      font-weight: bold;
+    }
+
+    .toggle-darkmode {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-darkmode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  <h1>Text Utility App</h1>
+
+  <div class="searchitem">
+    <input id="searchWords" placeholder="Search any word" type="text" />
+    <button onclick="searchWord()">Search</button>
+  </div>
+
+  <span id="search"></span>
+
+  <textarea id="inputText" rows="8" placeholder="Enter your text here..."></textarea>
+
+  <div class="btn-container">
+    <button onclick="convertToUpper()">Uppercase</button>
+    <button onclick="convertToLower()">Lowercase</button>
+    <button onclick="countwords()">Count Words</button>
+    <button onclick="countChar()">Count Characters</button>
+    <button onclick="highlightDuplicates()">Highlight Duplicates</button>
+    <button onclick="removeDublicates()">Remove Duplicates</button>
+    <button onclick="sliceText()">Slice Text</button>
+    <button onclick="countWordsOccurances()">Count Word Occurrences</button>
+    <button onclick="sortWords()">Sort Words</button>
+    <button onclick="saveText()">Save Text</button>
+    <button onclick="loadSavedText()">Load Saved Text</button>
+    <button onclick="clearText()">Clear / Reset</button>
+  </div>
+
+  <h3>Output:</h3>
+  <div id="output"></div>
+
+  <span><strong>Saved Text:</strong> </span>
+  <span id="savedText"></span>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>
